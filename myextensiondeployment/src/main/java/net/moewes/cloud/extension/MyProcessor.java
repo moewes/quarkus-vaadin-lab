@@ -30,13 +30,6 @@ public class MyProcessor {
     return new FeatureBuildItem("my-extension");
   }
 
-  @Record(STATIC_INIT)
-  @BuildStep
-  void helloBuildStep(MyRecorder recorder) {
-    System.out.println("Processor: My Recorder test");
-    recorder.sayHello("World");
-  }
-
   @BuildStep
   BeanDefiningAnnotationBuildItem registerX() {
     System.out.println("Processor: My Bean defining");
