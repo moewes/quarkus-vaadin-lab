@@ -55,14 +55,18 @@ public class VaadinProcessor {
 
   @BuildStep
   @Record(STATIC_INIT)
-  void scanForBeans(VaadinRecorder recorder, BeanArchiveIndexBuildItem beanArchiveIndex,
-      BeanContainerBuildItem beanContainer) {
+  void scanForBeans(VaadinRecorder recorder,
+      BeanArchiveIndexBuildItem beanArchiveIndex,
+      BeanContainerBuildItem beanContainer,
+      BuildProducer<ReflectiveClassBuildItem> reflectiveClass) {
     log.info("Search for @Route annotated views");
     IndexView indexView = beanArchiveIndex.getIndex();
     Collection<AnnotationInstance> testBeans = indexView.getAnnotations(ROUTE_ANNOTATION);
     for (AnnotationInstance ann : testBeans) {
       log.info("Found " + ann.target().toString());
       recorder.registerRoute(beanContainer.getValue(), ann.target().toString());
+      reflectiveClass.produce(new
+          ReflectiveClassBuildItem(false, false, ann.target().toString()));
     }
   }
 
@@ -70,22 +74,42 @@ public class VaadinProcessor {
   void reflection(BuildProducer<ReflectiveClassBuildItem> reflectiveClass) {
     log.info("Register reflective CLasses");
 
-    ReflectiveClassBuildItem classBuildItem = ReflectiveClassBuildItem
-        .builder("com.vaadin.flow.component.UI")
+    // Vaadin
+    ReflectiveClassBuildItem vaadinClassBuildItem = ReflectiveClassBuildItem
+        .builder("com.vaadin.flow.component.UI",
+            "com.vaadin.flow.component.PollEvent",
+            "com.vaadin.flow.component.ClickEvent",
+            "com.vaadin.flow.router.InternalServerError",
+            "com.vaadin.flow.theme.lumo.Lumo")
         .constructors(true)
         .methods(true)
         .build();
 
-    reflectiveClass.produce(classBuildItem);
+    reflectiveClass.produce(vaadinClassBuildItem);
+    // Athmosphere
+    ReflectiveClassBuildItem athmosClassBuildItem = ReflectiveClassBuildItem
+        .builder("org.atmosphere.cpr.DefaultBroadcaster",
+            "org.atmosphere.cpr.DefaultAtmosphereResourceFactory",
+            "org.atmosphere.cpr.DefaultBroadcasterFactory",
+            "org.atmosphere.cpr.DefaultMetaBroadcaster",
+            "org.atmosphere.cpr.DefaultAtmosphereResourceSessionFactory",
+            "org.atmosphere.util.VoidAnnotationProcessor",
+            "org.atmosphere.cache.UUIDBroadcasterCache",
+            "org.atmosphere.websocket.protocol.SimpleHttpProtocol",
+            "org.atmosphere.interceptor.IdleResourceInterceptor",
+            "org.atmosphere.interceptor.OnDisconnectInterceptor",
+            "org.atmosphere.interceptor.WebSocketMessageSuspendInterceptor",
+            "org.atmosphere.interceptor.JavaScriptProtocol",
+            "org.atmosphere.interceptor.JSONPAtmosphereInterceptor",
+            "org.atmosphere.interceptor.SSEAtmosphereInterceptor",
+            "org.atmosphere.interceptor.AndroidAtmosphereInterceptor",
+            "org.atmosphere.interceptor.PaddingAtmosphereInterceptor",
+            "org.atmosphere.interceptor.CacheHeadersInterceptor",
+            "org.atmosphere.interceptor.CorsInterceptor")
+        .constructors(true)
+        .methods(true)
+        .build();
 
+    reflectiveClass.produce(athmosClassBuildItem);
   }
-  /*
-  @BuildStep
-  ReflectiveClassBuildItem vaadin() {
-    log.info("Register reflective CLasses 2");
-    return new ReflectiveClassBuildItem(true, true, "com.vaadin.flow.components.UI");
-  }
-
-   */
-
 }
