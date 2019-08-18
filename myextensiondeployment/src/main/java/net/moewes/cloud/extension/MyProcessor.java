@@ -55,12 +55,21 @@ public class MyProcessor {
     return ServletBuildItem.builder("MyServlet", MyServlet.class.getName())
         .addMapping("/ui/*").build();
   }
+/*
+  @BuildStep
+  ServletBuildItem frontendServlet() {
+    System.out.println("Processor: add FrontendServlet");
+    return ServletBuildItem.builder("FrontendServlet", MyVaadinServlet.class.getName())
+        .addMapping("/frontend/*").build();
+  }*/
 
   @BuildStep
   ServletBuildItem myVaadinServlet() {
     System.out.println("Processor: add MyVaadinServlet");
     return ServletBuildItem.builder("MyVaadinServlet", MyVaadinServlet.class.getName())
-        .addMapping("/vaadin/*").build();
+        .addMapping("/vaadin/*")
+        .addMapping("/frontend/*")
+        .build();
   }
 
   @BuildStep

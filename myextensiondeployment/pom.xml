@@ -24,12 +24,6 @@
             <artifactId>quarkus-arc-deployment</artifactId>
             <version>0.20.0</version>
         </dependency>
-        <dependency>
-            <groupId>com.vaadin</groupId>
-            <artifactId>flow-server</artifactId>
-            <version>1.4.3</version>
-            <scope>compile</scope>
-        </dependency>
 
         <dependency>
             <groupId>io.quarkus</groupId>

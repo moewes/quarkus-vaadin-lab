@@ -39,18 +39,14 @@ public class MyVaadinServlet extends VaadinServlet {
 
       RouteConfiguration routeConfiguration = RouteConfiguration.forRegistry(routeRegistry);
 
-      //routeConfiguration.setAnnotatedRoute(MyTestView.class);
-
       for (String route : myBean.getRoutes()) {
         System.out.println("try to register " + route);
         try {
           ClassLoader contextClassLoader = Thread.currentThread().getContextClassLoader();
           Class<?> aClass = Class.forName(route, true, contextClassLoader);
           System.out.println("Class loaded" + route);
-          // if (aClass.isAssignableFrom(Component.class)) {
           routeConfiguration.setAnnotatedRoute((Class<? extends Component>) aClass);
           System.out.println("sucess " + route);
-          // }
         } catch (ClassNotFoundException e) {
           e.printStackTrace();
         }
@@ -71,7 +67,6 @@ public class MyVaadinServlet extends VaadinServlet {
       throws ServletException, IOException {
     try {
       servletName.set(getServletName());
-      log.info("ich bin aufgerufen! " + getServletName());
       super.service(request, response);
     } finally {
       servletName.set(null);
