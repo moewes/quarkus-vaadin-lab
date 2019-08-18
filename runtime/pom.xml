@@ -5,8 +5,8 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>net.moewes</groupId>
-  <artifactId>my-extension</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  <artifactId>quarkus-vaadin-extension</artifactId>
+  <version>0.1.0-SNAPSHOT</version>
 
   <properties>
     <maven.compiler.source>1.8</maven.compiler.source>

@@ -1,30 +1,31 @@
-package net.moewes;
+package net.moewes.quarkus.vaadin;
 
+import java.lang.annotation.Annotation;
+import java.util.Set;
+import java.util.function.Consumer;
+import java.util.function.Supplier;
 import javax.enterprise.context.spi.CreationalContext;
 import javax.enterprise.inject.AmbiguousResolutionException;
 import javax.enterprise.inject.Any;
 import javax.enterprise.inject.spi.Bean;
 import javax.enterprise.inject.spi.BeanManager;
 import javax.enterprise.util.AnnotationLiteral;
-import java.lang.annotation.Annotation;
-import java.util.Set;
-import java.util.function.Consumer;
-import java.util.function.Supplier;
 
 /**
  * Utility class for CDI lookup, and instantiation.
  * <p>
- * Dependent beans are instantiated without any warning,
- * but do not get destroyed properly.
- * {@link javax.annotation.PreDestroy} won't run.
+ * Dependent beans are instantiated without any warning, but do not get destroyed properly. {@link
+ * javax.annotation.PreDestroy} won't run.
  *
  * @param <T> Bean Type
  */
 class BeanLookup<T> {
+
   private final BeanManager beanManager;
   private final Class<T> type;
   private final Annotation[] qualifiers;
-  private UnsatisfiedHandler unsatisfiedHandler = () -> {};
+  private UnsatisfiedHandler unsatisfiedHandler = () -> {
+  };
   private Consumer<AmbiguousResolutionException> ambiguousHandler = e -> {
     throw e;
   };
@@ -33,19 +34,20 @@ class BeanLookup<T> {
   private final static Annotation[] ANY = new Annotation[]{new AnyLiteral()};
 
   private static class ServiceLiteral
-          extends AnnotationLiteral<VaadinServiceEnabled>
-          implements VaadinServiceEnabled {
+      extends AnnotationLiteral<VaadinServiceEnabled>
+      implements VaadinServiceEnabled {
 
   }
 
   private static class AnyLiteral
-          extends AnnotationLiteral<Any>
-          implements Any {
+      extends AnnotationLiteral<Any>
+      implements Any {
 
   }
 
   @FunctionalInterface
   public interface UnsatisfiedHandler {
+
     void handle();
   }
 
@@ -65,7 +67,7 @@ class BeanLookup<T> {
   }
 
   BeanLookup<T> setAmbiguousHandler(
-          Consumer<AmbiguousResolutionException> ambiguousHandler) {
+      Consumer<AmbiguousResolutionException> ambiguousHandler) {
     this.ambiguousHandler = ambiguousHandler;
     return this;
   }

@@ -1,6 +1,6 @@
-package net.moewes;
+package net.moewes.quarkus.vaadin;
 
-import static net.moewes.BeanLookup.SERVICE;
+import static net.moewes.quarkus.vaadin.BeanLookup.SERVICE;
 
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.di.DefaultInstantiator;
@@ -41,7 +41,7 @@ public class CdiInstantiator implements Instantiator {
   public boolean init(VaadinService service) {
     delegate = new DefaultInstantiator(service);
     return delegate.init(service)
-        && service instanceof MyVaadinServletService;
+        && service instanceof QuarkusVaadinServletService;
   }
 
   @Override

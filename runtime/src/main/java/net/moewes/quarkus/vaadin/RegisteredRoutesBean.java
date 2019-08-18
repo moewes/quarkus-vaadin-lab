@@ -1,4 +1,4 @@
-package net.moewes;
+package net.moewes.quarkus.vaadin;
 
 import java.util.HashSet;
 import java.util.List;
@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 import javax.enterprise.context.ApplicationScoped;
 
 @ApplicationScoped
-public class MyBean {
+public class RegisteredRoutesBean {
 
   private Set<String> routes = new HashSet<>();
 

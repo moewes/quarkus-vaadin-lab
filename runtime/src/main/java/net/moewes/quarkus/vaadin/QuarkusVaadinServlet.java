@@ -1,4 +1,4 @@
-package net.moewes;
+package net.moewes.quarkus.vaadin;
 
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.function.DeploymentConfiguration;
@@ -17,7 +17,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class MyVaadinServlet extends VaadinServlet {
+public class QuarkusVaadinServlet extends VaadinServlet {
 
   Logger log = Logger.getLogger("MyVaadin");
 
@@ -25,7 +25,7 @@ public class MyVaadinServlet extends VaadinServlet {
   BeanManager beanManager;
 
   @Inject
-  MyBean myBean;
+  RegisteredRoutesBean myBean;
 
   private static final ThreadLocal<String> servletName = new ThreadLocal<>();
 
@@ -40,13 +40,12 @@ public class MyVaadinServlet extends VaadinServlet {
       RouteConfiguration routeConfiguration = RouteConfiguration.forRegistry(routeRegistry);
 
       for (String route : myBean.getRoutes()) {
-        System.out.println("try to register " + route);
+        log.info("try to register " + route);
         try {
           ClassLoader contextClassLoader = Thread.currentThread().getContextClassLoader();
           Class<?> aClass = Class.forName(route, true, contextClassLoader);
-          System.out.println("Class loaded" + route);
           routeConfiguration.setAnnotatedRoute((Class<? extends Component>) aClass);
-          System.out.println("sucess " + route);
+          log.info("sucess " + route);
         } catch (ClassNotFoundException e) {
           e.printStackTrace();
         }
@@ -91,8 +90,8 @@ public class MyVaadinServlet extends VaadinServlet {
   protected VaadinServletService createServletService(
       DeploymentConfiguration configuration) throws ServiceException {
 
-    final MyVaadinServletService service =
-        new MyVaadinServletService(this, configuration, beanManager);
+    final QuarkusVaadinServletService service =
+        new QuarkusVaadinServletService(this, configuration, beanManager);
     service.init();
     return service;
   }

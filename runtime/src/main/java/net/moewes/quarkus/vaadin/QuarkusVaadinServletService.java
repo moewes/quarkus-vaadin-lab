@@ -1,6 +1,9 @@
-package net.moewes;
+package net.moewes.quarkus.vaadin;
 //import com.vaadin.cdi.annotation.VaadinServiceEnabled;
 //import com.vaadin.cdi.context.VaadinSessionScopedContext;
+
+import static net.moewes.quarkus.vaadin.BeanLookup.SERVICE;
+
 import com.vaadin.flow.component.ComponentEventListener;
 import com.vaadin.flow.component.PollEvent;
 import com.vaadin.flow.component.UI;
@@ -22,26 +25,23 @@ import com.vaadin.flow.server.SystemMessagesProvider;
 import com.vaadin.flow.server.VaadinService;
 import com.vaadin.flow.server.VaadinServletService;
 import com.vaadin.flow.server.VaadinSession;
-//import org.apache.deltaspike.core.util.ProxyUtils;
+import java.util.Optional;
+import javax.enterprise.inject.AmbiguousResolutionException;
+import javax.enterprise.inject.spi.BeanManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.enterprise.inject.AmbiguousResolutionException;
-import javax.enterprise.inject.spi.BeanManager;
-import java.util.Optional;
-
-import static net.moewes.BeanLookup.SERVICE;
+//import org.apache.deltaspike.core.util.ProxyUtils;
 
 //import static com.vaadin.cdi.BeanLookup.SERVICE;
 
 /**
  * Servlet service implementation for Vaadin CDI.
  * <p>
- * This class creates and initializes a @{@link VaadinServiceEnabled}
- * {@link Instantiator}.
+ * This class creates and initializes a @{@link VaadinServiceEnabled} {@link Instantiator}.
  * <p>
- * Some @{@link VaadinServiceEnabled} beans can be used to customize Vaadin,
- * they are also created, and bound if found.
+ * Some @{@link VaadinServiceEnabled} beans can be used to customize Vaadin, they are also created,
+ * and bound if found.
  * <ul>
  * <li>{@link SystemMessagesProvider} is bound to service by
  * {@link VaadinService#setSystemMessagesProvider(SystemMessagesProvider)}.
@@ -51,18 +51,17 @@ import static net.moewes.BeanLookup.SERVICE;
  *
  * @see CdiVaadinServlet
  */
-public class MyVaadinServletService extends VaadinServletService {
+public class QuarkusVaadinServletService extends VaadinServletService {
 
   /**
-   * Static listener class,
-   * to avoid registering the whole service instance.
+   * Static listener class, to avoid registering the whole service instance.
    */
   @ListenerPriority(-100) // navigation event listeners are last by default
   private static class UIEventListener implements
-          AfterNavigationListener,
-          BeforeEnterListener,
-          BeforeLeaveListener,
-          ComponentEventListener<PollEvent> {
+      AfterNavigationListener,
+      BeforeEnterListener,
+      BeforeLeaveListener,
+      ComponentEventListener<PollEvent> {
 
     private final BeanManager beanManager;
 
@@ -95,9 +94,9 @@ public class MyVaadinServletService extends VaadinServletService {
   private final BeanManager beanManager;
   private final UIEventListener uiEventListener;
 
-  public MyVaadinServletService(MyVaadinServlet servlet,
-                                 DeploymentConfiguration configuration,
-                                 BeanManager beanManager) {
+  public QuarkusVaadinServletService(QuarkusVaadinServlet servlet,
+      DeploymentConfiguration configuration,
+      BeanManager beanManager) {
     super(servlet, configuration);
     this.beanManager = beanManager;
     uiEventListener = new UIEventListener(beanManager);
@@ -106,7 +105,7 @@ public class MyVaadinServletService extends VaadinServletService {
   @Override
   public void init() throws ServiceException {
     lookup(SystemMessagesProvider.class)
-            .ifPresent(this::setSystemMessagesProvider);
+        .ifPresent(this::setSystemMessagesProvider);
     addUIInitListener(beanManager::fireEvent);
     addSessionInitListener(this::sessionInit);
     addSessionDestroyListener(this::sessionDestroy);
@@ -123,13 +122,14 @@ public class MyVaadinServletService extends VaadinServletService {
     super.fireUIInitListeners(ui);
   }
 
-  public MyVaadinServlet getServlet() {
-    return (MyVaadinServlet) super.getServlet();
+  @Override
+  public QuarkusVaadinServlet getServlet() {
+    return (QuarkusVaadinServlet) super.getServlet();
   }
 
   @Override
   protected Optional<Instantiator> loadInstantiators()
-          throws ServiceException {
+      throws ServiceException {
     Optional<Instantiator> instantiatorOptional = lookup(Instantiator.class);
     if (instantiatorOptional.isPresent()) {
       Instantiator instantiator = instantiatorOptional.get();
@@ -145,8 +145,8 @@ public class MyVaadinServletService extends VaadinServletService {
       }
     } else {
       throw new ServiceException(
-              "Cannot init VaadinService "
-                      + "because no CDI instantiator bean found."
+          "Cannot init VaadinService "
+              + "because no CDI instantiator bean found."
       );
     }
     return instantiatorOptional;
@@ -158,13 +158,13 @@ public class MyVaadinServletService extends VaadinServletService {
       return Optional.ofNullable(instance);
     } catch (AmbiguousResolutionException e) {
       throw new ServiceException(
-              "There are multiple eligible CDI " + type.getSimpleName()
-                      + " beans.", e);
+          "There are multiple eligible CDI " + type.getSimpleName()
+              + " beans.", e);
     }
   }
 
   private void sessionInit(SessionInitEvent sessionInitEvent)
-          throws ServiceException {
+      throws ServiceException {
     VaadinSession session = sessionInitEvent.getSession();
     lookup(ErrorHandler.class).ifPresent(session::setErrorHandler);
     beanManager.fireEvent(sessionInitEvent);
@@ -195,12 +195,12 @@ public class MyVaadinServletService extends VaadinServletService {
       // beans are lost at this point.
       // Does not throw an exception, but catch anything just to be sure.
       getLogger().warn("Error at destroy event distribution with CDI.",
-              e);
+          e);
     }
   }
 
   private static Logger getLogger() {
-    return LoggerFactory.getLogger(MyVaadinServletService.class);
+    return LoggerFactory.getLogger(QuarkusVaadinServletService.class);
   }
 
 }

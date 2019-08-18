@@ -6,14 +6,7 @@
     "name": "net.moewes.cloud.ui.MainView"
   },
   {
-    "name": "net.moewes.MyTestView"
-  },
-  {
-    "name": "com.vaadin.flow.component.UI",
-    "allDeclaredConstructors": true,
-    "allPublicConstructors": true,
-    "allDeclaredMethods": true,
-    "allPublicMethods": true
+    "name": "net.moewes.quarkus.vaadin.MyTestView"
   },
   {
     "name": "com.vaadin.flow.component.PollEvent",
