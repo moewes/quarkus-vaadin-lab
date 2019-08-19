@@ -1,11 +1,12 @@
 package net.moewes.cloud.ui;
 
 import com.vaadin.flow.component.html.Div;
+import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Route;
 import javax.inject.Inject;
 
-@Route("cdi")
-public class CdiView extends Div {
+@Route(value = "cdi", layout = MyLayout.class)
+public class CdiView extends VerticalLayout {
 
   @Inject
   public CdiView(RequestBean bean) {
