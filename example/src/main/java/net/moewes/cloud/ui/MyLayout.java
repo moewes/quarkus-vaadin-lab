@@ -1,5 +1,6 @@
 package net.moewes.cloud.ui;
 
+import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.applayout.DrawerToggle;
 import com.vaadin.flow.component.html.Span;
@@ -13,25 +14,24 @@ public class MyLayout extends AppLayout {
 
   public MyLayout() {
 
-    setPrimarySection(AppLayout.Section.DRAWER);
+    //setPrimarySection(AppLayout.Section.DRAWER);
 
-    addToNavbar(new DrawerToggle());
-
-    RouterLink link = new RouterLink(null, MainView.class);
-    //link.add(VaadinIcon.ARROW_RIGHT.create());
-    link.add("link text");
-    Tab tab = new Tab();
-    tab.add(link);
-
-    Tabs tabs = new Tabs(new Tab("Home"), new Tab("About"), tab);
+    Tabs tabs = new Tabs(getTab("Home", MainView.class),
+        getTab("Details", DetailsView.class),
+        getTab("Accordion", AccordionView.class));
     tabs.setOrientation(Tabs.Orientation.VERTICAL);
-    // appLayout.
+
     addToDrawer(tabs);
 
-    Span appName = new Span("Branding");
+    Span appName = new Span("Quarkus Vaadin Example");
 
-    addToNavbar(true, appName);
+    addToNavbar(true, new DrawerToggle(), appName);
+  }
 
-    //add(appLayout);
+  private Tab getTab(String text, Class<? extends Component> viewClazz) {
+    RouterLink link = new RouterLink(text, viewClazz);
+    Tab tab = new Tab();
+    tab.add(link);
+    return tab;
   }
 }

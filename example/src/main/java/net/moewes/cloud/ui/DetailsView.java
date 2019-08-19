@@ -6,7 +6,7 @@ import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Route;
 
-@Route("details")
+@Route(value = "details", layout = MyLayout.class)
 public class DetailsView extends VerticalLayout {
 
   public DetailsView() {
