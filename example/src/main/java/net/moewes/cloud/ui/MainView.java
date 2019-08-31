@@ -12,13 +12,13 @@ public class MainView extends VerticalLayout {
 
   MainView() {
     Div div = new Div();
-    div.setText("Hallo from Vaadin");
+    div.setText("Hello from Vaadin");
 
     add(div);
 
     Button button = new Button();
 
-    button.setText("Mein Button");
+    button.setText("My Button");
 
     button.addClickListener(event -> {
       UI.getCurrent().navigate(CdiView.class);
