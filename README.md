@@ -1,6 +1,6 @@
 # quarkus-vaadin-lab
 
-An experimatal Quarkus-Extension to use Vaadin with Quarkus.
+An experimental Quarkus-Extension to use Vaadin with Quarkus.
 
 Currently this project has to branches:
 
