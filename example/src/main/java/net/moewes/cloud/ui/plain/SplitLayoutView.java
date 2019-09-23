@@ -1,10 +1,12 @@
 package net.moewes.cloud.ui.plain;
 
+import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.H2;
 import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.splitlayout.SplitLayout;
+import com.vaadin.flow.component.splitlayout.SplitLayoutVariant;
 import com.vaadin.flow.router.Route;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -42,6 +44,20 @@ public class SplitLayoutView extends VerticalLayout {
     layout2.setPrimaryStyle("background", "salmon");
 
     add(subtitle2, layout2);
+
+    H2 subtitle3 = new H2("Split Layout with Theme Variants");
+
+    SplitLayout layout3 = new SplitLayout(
+        new Label("First content component"),
+        new Label("Second content component"));
+    layout3.addThemeVariants(SplitLayoutVariant.LUMO_SMALL);
+    Button button = new Button("Remove 'small' variant");
+    button.addClickListener(event -> {
+      layout3.removeThemeVariants(SplitLayoutVariant.LUMO_SMALL);
+      button.setDisableOnClick(true);
+    });
+
+    add(subtitle3, layout3, button);
 
   }
 }
