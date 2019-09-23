@@ -54,6 +54,7 @@ Ensure that $GRAALVM_HOME is set.
  Accordion | works | works | works |
  AppLayout | works | works | fails |
  Button | works | works | works |
+ [Check box](https://vaadin.com/components/vaadin-checkbox) | works | not tested | not tested
  Detail | works | works | fails |
  [List box](https://vaadin.com/components/vaadin-list-box) | works | works | works |
  others | not tested | not tested | not tested
