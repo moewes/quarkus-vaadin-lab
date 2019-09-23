@@ -18,6 +18,7 @@ Switch into example directory and type:
 mvn clean package quarkus:dev -Dvaadin.compatibilityMode=true
 ````
 
+Open Browser http://localhost:8080
 
 ## run example java vm mode
 
@@ -29,6 +30,8 @@ mvn clean package
 java -Dvaadin.compatibilityMode=true -jar ./target/quarkus-vaadin-extension-example-0.1.0-SNAPSHOT-runner.jar
 ````
 
+Open Browser http://localhost:8080
+
 ## run example in native mode
 
 Switch into example directory and type:
@@ -39,6 +42,8 @@ mvn clean package -Pnative
 ./target/quarkus-vaadin-extension-example-0.1.0-SNAPSHOT-runner -Dvaadin.compatibilityMode=true
 
 ````
+
+Open Browser http://localhost:8080
 
 Ensure that $GRAALVM_HOME is set.
 
