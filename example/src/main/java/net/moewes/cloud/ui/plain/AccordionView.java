@@ -1,4 +1,4 @@
-package net.moewes.cloud.ui;
+package net.moewes.cloud.ui.plain;
 
 import com.vaadin.flow.component.accordion.Accordion;
 import com.vaadin.flow.component.accordion.AccordionPanel;
@@ -8,7 +8,7 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Route;
 
 
-@Route(value = "accordion", layout = MyLayout.class)
+@Route(value = "accordion")
 public class AccordionView extends VerticalLayout {
 
   public AccordionView() {

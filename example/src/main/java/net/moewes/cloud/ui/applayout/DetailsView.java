@@ -1,4 +1,4 @@
-package net.moewes.cloud.ui;
+package net.moewes.cloud.ui.applayout;
 
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.details.Details;
@@ -6,7 +6,7 @@ import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Route;
 
-@Route(value = "details", layout = MyLayout.class)
+@Route(value = "app/details", layout = MyLayout.class)
 public class DetailsView extends VerticalLayout {
 
   public DetailsView() {

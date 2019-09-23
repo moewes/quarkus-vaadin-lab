@@ -1,4 +1,4 @@
-package net.moewes.cloud.ui;
+package net.moewes.cloud.ui.plain;
 
 
 import com.vaadin.flow.component.UI;
@@ -7,7 +7,7 @@ import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Route;
 
-@Route(value = "hallo", layout = MyLayout.class)
+@Route(value = "hallo")
 public class MainView extends VerticalLayout {
 
   MainView() {

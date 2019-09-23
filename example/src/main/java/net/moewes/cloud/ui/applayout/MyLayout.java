@@ -1,4 +1,4 @@
-package net.moewes.cloud.ui;
+package net.moewes.cloud.ui.applayout;
 
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.applayout.AppLayout;
