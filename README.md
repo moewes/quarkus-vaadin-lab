@@ -49,14 +49,14 @@ Ensure that $GRAALVM_HOME is set.
 
 # Feature Matrix
 
-| Component | Dev Mode | VM Mode | Native Mode |
-| -------- | --------- | --------- | --------- |
-| Accordion | works | works | works |
-| AppLayout | works | works | fails |
-| Button | works | works | works |
-| Detail | works | works | fails |
-| List box | works | works | works |
-| others | not tested | not tested | not tested
-| Inject CDI Beans | works | works | works
+ Component | Dev Mode | VM Mode | Native Mode |
+ -------- | --------- | --------- | --------- |
+ Accordion | works | works | works |
+ AppLayout | works | works | fails |
+ Button | works | works | works |
+ Detail | works | works | fails |
+ [List box](https://vaadin.com/components/vaadin-list-box) | works | works | works |
+ others | not tested | not tested | not tested
+ Inject CDI Beans | works | works | works
 
 
