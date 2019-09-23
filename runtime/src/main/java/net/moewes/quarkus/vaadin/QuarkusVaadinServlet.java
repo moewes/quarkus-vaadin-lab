@@ -44,8 +44,10 @@ public class QuarkusVaadinServlet extends VaadinServlet {
         try {
           ClassLoader contextClassLoader = Thread.currentThread().getContextClassLoader();
           Class<?> aClass = Class.forName(route, true, contextClassLoader);
-          routeConfiguration.setAnnotatedRoute((Class<? extends Component>) aClass);
-          log.info("sucess " + route);
+          if (!routeConfiguration.isRouteRegistered((Class<? extends Component>) aClass)) {
+            routeConfiguration.setAnnotatedRoute((Class<? extends Component>) aClass);
+            log.info("sucess " + route);
+          }
         } catch (ClassNotFoundException e) {
           e.printStackTrace();
         }

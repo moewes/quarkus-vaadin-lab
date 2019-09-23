@@ -7,7 +7,7 @@ import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Route;
 
-@Route("hallo")
+@Route(value = "hallo", layout = MyLayout.class)
 public class MainView extends VerticalLayout {
 
   MainView() {
@@ -25,5 +25,7 @@ public class MainView extends VerticalLayout {
     });
 
     add(button);
+
+
   }
 }
