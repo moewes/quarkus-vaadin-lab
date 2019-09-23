@@ -55,6 +55,7 @@ Ensure that $GRAALVM_HOME is set.
 | AppLayout | works | works | fails |
 | Button | works | works | works |
 | Detail | works | works | fails |
+| List box | works | works | works |
 | others | not tested | not tested | not tested
 | Inject CDI Beans | works | works | works
 

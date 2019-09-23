@@ -25,7 +25,5 @@ public class MainView extends VerticalLayout {
     });
 
     add(button);
-
-
   }
 }

@@ -1,6 +1,5 @@
 package net.moewes.cloud.ui.applayout;
 
-
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.html.Div;
@@ -25,7 +24,5 @@ public class MainView extends VerticalLayout {
     });
 
     add(button);
-
-
   }
 }
