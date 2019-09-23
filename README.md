@@ -2,7 +2,14 @@
 
 An experimental Quarkus-Extension to use Vaadin with Quarkus.
 
-Currently this project has to branches:
+# How to start
 
-* Vaadin_13 - with builds on Vaadin 13 and can be used with mvn package quarkus:dev and native builds. It was a first POC
-* Vaadin_14 - with has Vaadin 14 support and works with mvn package quarkus:dev but has some issues with native builds.
+Check out branch
+
+Build with mvn install
+
+See example for how to use it with quarkus.
+
+start in dev mode with additional Parameter:
+
+mvn clean package quarkus:dev -Dvaadin.compatibilityMode=true

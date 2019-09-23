@@ -24,7 +24,7 @@ import org.jboss.logging.Logger;
 
 public class VaadinProcessor {
 
-  static DotName ROUTE_ANNOTATION = DotName.createSimple(Route.class.getName());
+  static private DotName ROUTE_ANNOTATION = DotName.createSimple(Route.class.getName());
 
   private static final Logger log = Logger.getLogger(VaadinProcessor.class);
 
@@ -79,6 +79,14 @@ public class VaadinProcessor {
         .builder("com.vaadin.flow.component.UI",
             "com.vaadin.flow.component.PollEvent",
             "com.vaadin.flow.component.ClickEvent",
+            "com.vaadin.flow.component.CompositionEndEvent",
+            "com.vaadin.flow.component.CompositionStartEvent",
+            "com.vaadin.flow.component.CompositionUpdateEvent",
+            "com.vaadin.flow.component.KeyDownEvent",
+            "com.vaadin.flow.component.KeyPressEvent",
+            "com.vaadin.flow.component.KeyUpEvent",
+            "com.vaadin.flow.component.details.Details.OpenedChangeEvent",
+            "com.vaadin.flow.component.details.Details",
             "com.vaadin.flow.router.InternalServerError",
             "com.vaadin.flow.theme.lumo.Lumo")
         .constructors(true)
