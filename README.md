@@ -57,6 +57,7 @@ Ensure that $GRAALVM_HOME is set.
  [Check box](https://vaadin.com/components/vaadin-checkbox) | works | not tested | not tested
  Detail | works | works | fails |
  [List box](https://vaadin.com/components/vaadin-list-box) | works | works | works |
+ [Split Layout](https://vaadin.com/components/vaadin-split-layout) | works | not tested | not tested
  others | not tested | not tested | not tested
  Inject CDI Beans | works | works | works
 
