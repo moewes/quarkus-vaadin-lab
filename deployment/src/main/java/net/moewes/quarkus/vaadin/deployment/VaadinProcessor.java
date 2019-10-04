@@ -85,7 +85,8 @@ public class VaadinProcessor {
             "com.vaadin.flow.component.KeyDownEvent",
             "com.vaadin.flow.component.KeyPressEvent",
             "com.vaadin.flow.component.KeyUpEvent",
-            "com.vaadin.flow.component.details.Details.OpenedChangeEvent",
+            "com.vaadin.flow.component.splitlayout.GeneratedVaadinSplitLayout$SplitterDragendEvent",
+            "com.vaadin.flow.component.details.Details$OpenedChangeEvent",
             "com.vaadin.flow.component.details.Details",
             "com.vaadin.flow.router.InternalServerError",
             "com.vaadin.flow.theme.lumo.Lumo")

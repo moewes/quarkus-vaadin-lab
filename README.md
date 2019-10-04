@@ -55,9 +55,9 @@ Ensure that $GRAALVM_HOME is set.
  AppLayout | works | works | fails |
  Button | works | works | works |
  [Check box](https://vaadin.com/components/vaadin-checkbox) | works | not tested | not tested
- Detail | works | works | fails |
+ Detail | works | works | works |
  [List box](https://vaadin.com/components/vaadin-list-box) | works | works | works |
- [Split Layout](https://vaadin.com/components/vaadin-split-layout) | works | not tested | not tested
+ [Split Layout](https://vaadin.com/components/vaadin-split-layout) | works | works | works
  others | not tested | not tested | not tested
  Inject CDI Beans | works | works | works
 

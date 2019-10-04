@@ -10,10 +10,10 @@ import com.vaadin.flow.component.splitlayout.SplitLayoutVariant;
 import com.vaadin.flow.router.Route;
 import java.util.concurrent.atomic.AtomicInteger;
 
-@Route("splitlayout")
-public class SplitLayoutView extends VerticalLayout {
+@Route("splitlayoutevent")
+public class SplitLayoutWithEventView extends VerticalLayout {
 
-  public SplitLayoutView() {
+  public SplitLayoutWithEventView() {
 
     H1 title = new H1("Split Layout");
 
@@ -28,6 +28,8 @@ public class SplitLayoutView extends VerticalLayout {
 
     Label message1 = new Label("Drag and drop the splitter");
     AtomicInteger resizeCounter = new AtomicInteger();
+    layout1.addSplitterDragendListener(event -> message1.setText(
+        "SplitLayout Resized " + resizeCounter.incrementAndGet() + " times."));
 
     add(subtitle1, layout1, message1);
 

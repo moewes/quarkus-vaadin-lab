@@ -10,25 +10,26 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <quarkus.version>0.20.0</quarkus.version>
   </properties>
 
   <dependencies>
     <dependency>
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-core-deployment</artifactId>
-      <version>0.20.0</version>
+      <version>${quarkus.version}</version>
       <scope>compile</scope>
     </dependency>
     <dependency>
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-arc-deployment</artifactId>
-      <version>0.20.0</version>
+      <version>${quarkus.version}</version>
     </dependency>
 
     <dependency>
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-undertow-deployment</artifactId>
-      <version>0.20.0</version>
+      <version>${quarkus.version}</version>
     </dependency>
     <dependency>
       <groupId>net.moewes</groupId>
@@ -49,7 +50,7 @@
             <path>
               <groupId>io.quarkus</groupId>
               <artifactId>quarkus-extension-processor</artifactId>
-              <version>0.20.0</version>
+              <version>${quarkus.version}</version>
             </path>
           </annotationProcessorPaths>
         </configuration>
