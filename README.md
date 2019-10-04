@@ -2,6 +2,9 @@
 
 An experimental Quarkus-Extension to use Vaadin with Quarkus.
 
+Quarkus: 0.23.2
+Vaadin: 14.0.1
+
 # How to start
 
 Check out branch
@@ -54,7 +57,7 @@ Ensure that $GRAALVM_HOME is set.
  Accordion | works | works | works |
  AppLayout | works | works | fails |
  Button | works | works | works |
- [Check box](https://vaadin.com/components/vaadin-checkbox) | works | not tested | not tested
+ [Check box](https://vaadin.com/components/vaadin-checkbox) | works | works | works
  Detail | works | works | works |
  [List box](https://vaadin.com/components/vaadin-list-box) | works | works | works |
  [Split Layout](https://vaadin.com/components/vaadin-split-layout) | works | works | works
