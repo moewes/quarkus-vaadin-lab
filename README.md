@@ -3,7 +3,7 @@
 An experimental Quarkus-Extension to use Vaadin with Quarkus.
 
 Quarkus: 0.23.2
-Vaadin: 14.0.1
+Vaadin: 14.0.5
 
 # How to start
 
