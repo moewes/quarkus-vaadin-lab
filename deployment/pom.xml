@@ -8,9 +8,14 @@
   <artifactId>quarkus-vaadin-extension-deployment</artifactId>
   <version>0.1.0-SNAPSHOT</version>
 
+  <parent>
+    <artifactId>quarkus-vaadin</artifactId>
+    <groupId>net.moewes</groupId>
+    <version>0.1.0-SNAPSHOT</version>
+  </parent>
+
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <quarkus.version>0.20.0</quarkus.version>
   </properties>
 
   <dependencies>
