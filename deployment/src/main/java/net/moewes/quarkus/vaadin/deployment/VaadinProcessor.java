@@ -89,6 +89,7 @@ public class VaadinProcessor {
             "com.vaadin.flow.component.details.Details$OpenedChangeEvent",
             "com.vaadin.flow.component.details.Details",
             "com.vaadin.flow.router.InternalServerError",
+            "com.vaadin.flow.router.RouteNotFoundError",
             "com.vaadin.flow.theme.lumo.Lumo")
         .constructors(true)
         .methods(true)

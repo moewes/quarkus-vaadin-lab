@@ -3,7 +3,7 @@
 An experimental Quarkus-Extension to use Vaadin with Quarkus.
 
 Quarkus: 0.23.2
-Vaadin: 14.0.5
+Vaadin: 14.0.7
 
 # How to start
 
@@ -18,7 +18,7 @@ See example for how to use it with quarkus.
 Switch into example directory and type:
 
 ````
-mvn clean package quarkus:dev -Dvaadin.compatibilityMode=true
+mvn clean package quarkus:dev
 ````
 
 Open Browser http://localhost:8080
@@ -30,7 +30,7 @@ Switch into example directory and type:
 ````
 mvn clean package
 
-java -Dvaadin.compatibilityMode=true -jar ./target/quarkus-vaadin-extension-example-0.1.0-SNAPSHOT-runner.jar
+java -jar ./target/quarkus-vaadin-extension-example-0.1.0-SNAPSHOT-runner.jar
 ````
 
 Open Browser http://localhost:8080
@@ -42,7 +42,7 @@ Switch into example directory and type:
 ````
 mvn clean package -Pnative
 
-./target/quarkus-vaadin-extension-example-0.1.0-SNAPSHOT-runner -Dvaadin.compatibilityMode=true
+./target/quarkus-vaadin-extension-example-0.1.0-SNAPSHOT-runner
 
 ````
 
