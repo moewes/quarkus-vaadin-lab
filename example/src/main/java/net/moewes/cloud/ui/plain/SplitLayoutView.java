@@ -28,6 +28,8 @@ public class SplitLayoutView extends VerticalLayout {
 
     Label message1 = new Label("Drag and drop the splitter");
     AtomicInteger resizeCounter = new AtomicInteger();
+    layout1.addSplitterDragendListener(event -> message1.setText(
+        "SplitLayout Resized " + resizeCounter.incrementAndGet() + " times."));
 
     add(subtitle1, layout1, message1);
 
