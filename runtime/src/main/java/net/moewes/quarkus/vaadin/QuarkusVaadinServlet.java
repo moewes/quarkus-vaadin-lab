@@ -51,8 +51,6 @@ public class QuarkusVaadinServlet extends VaadinServlet {
         } catch (ClassNotFoundException e) {
           e.printStackTrace();
         }
-
-
       }
 
       log.info("init");

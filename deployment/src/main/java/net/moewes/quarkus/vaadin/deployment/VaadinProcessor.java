@@ -11,7 +11,7 @@ import io.quarkus.deployment.annotations.BuildProducer;
 import io.quarkus.deployment.annotations.BuildStep;
 import io.quarkus.deployment.annotations.Record;
 import io.quarkus.deployment.builditem.FeatureBuildItem;
-import io.quarkus.deployment.builditem.substrate.ReflectiveClassBuildItem;
+import io.quarkus.deployment.builditem.nativeimage.ReflectiveClassBuildItem;
 import io.quarkus.undertow.deployment.ServletBuildItem;
 import java.util.Collection;
 import net.moewes.quarkus.vaadin.QuarkusVaadinServlet;
@@ -24,9 +24,8 @@ import org.jboss.logging.Logger;
 
 public class VaadinProcessor {
 
-  static private DotName ROUTE_ANNOTATION = DotName.createSimple(Route.class.getName());
-
   private static final Logger log = Logger.getLogger(VaadinProcessor.class);
+  static private DotName ROUTE_ANNOTATION = DotName.createSimple(Route.class.getName());
 
   @BuildStep
   FeatureBuildItem featureBuildItem() {
