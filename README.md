@@ -1,3 +1,7 @@
+# News:
+
+2020-12-31 I have thought about another way to combine the principles of vaadin flow, ui microservices and quarkus. May have a look at my project [CloudUi](https://moewes.github.io/cloud-ui). I am looking forward for feedback!
+
 # quarkus-vaadin-lab
 
 An experimental Quarkus-Extension to use Vaadin with Quarkus.
